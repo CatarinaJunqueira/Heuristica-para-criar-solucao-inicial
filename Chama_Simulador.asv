@@ -1,0 +1,29 @@
+
+
+
+
+% porto: 1º linha = porto de destino
+%           2º linha = id do contêiner
+
+NPatios = size(phi,1); % número de pátios
+NPortos = size(phi,2); % número de portos
+porto=[];
+contador=1;
+for i=1:NPatios
+    for j =1:NPortos
+        if isempty(phi{i,j}) == 0 % se não é vazio
+          n = size(phi{10i,j),2);
+          for k=1:n
+              p=phi{i,j}(i,k);
+              porto(1,contador)=j;
+              porto(2,contador)=p;
+              contador=contador+1;
+          end
+        end
+    end  
+end
+
+tic;
+[Navio,value,Seq_Navio,Seq_Patio,Seq_Retirada] = Simulador(patio,porto,R,C);
+tempo=toc;
+dispaly(toc);
